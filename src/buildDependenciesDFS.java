@@ -3,12 +3,10 @@ import java.util.HashMap;
 import java.util.Stack;
 
 public class buildDependenciesDFS {
-//	ArrayList<Node> nodes;
 	HashMap<String,Node> hm;
 	
 	
 	public buildDependenciesDFS(){
-//		this.nodes = new ArrayList<>();
 		this.hm = new HashMap<>();
 	}
 
@@ -41,7 +39,7 @@ public class buildDependenciesDFS {
 		Stack<Node> res = new Stack<>();
 		
 		for(Node n: hm.values()){
-			if(n.isVisiting==false&&n.visited==false){
+			if(n.visited==false){
 				if(!canDFS(n, res)) return null;
 			}
 		}
@@ -79,6 +77,7 @@ public class buildDependenciesDFS {
 		myBuild.addDepencency("b", "z");
 		myBuild.addDepencency("d", "x");
 		myBuild.addDepencency("x", "m");
+		myBuild.addDepencency("s", "k");
 		//find order
 		Stack<Node> res = myBuild.orderNodes();
 		//print
