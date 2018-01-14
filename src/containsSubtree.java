@@ -35,7 +35,10 @@ public class containsSubtree {
 		Node r2 = new Node(12);
 		r2.right = new Node(14);
 	
+		Node r3 = new Node(12);
+		r3.right = new Node(15);
 		
 		System.out.println(myClass.isSubtree(r1, r2));
+		System.out.println(myClass.isSubtree(r1, r3));
 	}
 }
