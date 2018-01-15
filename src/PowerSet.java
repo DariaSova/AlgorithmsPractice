@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+
+public class PowerSet {
+
+	public static ArrayList<ArrayList<Integer>> getSets(ArrayList<Integer> set, int index) {
+		ArrayList<ArrayList<Integer>> allsets; 
+		
+		if(set.size()==index) {
+			allsets = new ArrayList<ArrayList<Integer>>();
+			allsets.add(new ArrayList<Integer>()); //add empty
+		}else {
+			allsets = getSets(set, index+1);
+			int item = set.get(index);
+			ArrayList<ArrayList<Integer>> moresets = new ArrayList<ArrayList<Integer>>();
+			
+			for(ArrayList<Integer> list: allsets){
+				ArrayList<Integer> newset = new ArrayList<Integer>();
+				newset.addAll(list);
+				newset.add(item);
+				moresets.add(newset);
+			}
+			allsets.addAll(moresets);
+		}
+		
+		return allsets;
+	}
+	
+	
+	public static void main(String[] args) {
+		ArrayList<Integer> nums = new ArrayList<Integer>();
+		nums.add(1);
+		nums.add(2);
+		nums.add(3);
+		
+		ArrayList<ArrayList<Integer>> res = getSets(nums, 0);
+		System.out.println(res.toString());
+
+	}
+}
