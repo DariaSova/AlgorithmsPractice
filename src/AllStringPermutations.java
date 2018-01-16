@@ -31,13 +31,53 @@ public class AllStringPermutations {
 		return result;
 	}
 	
+	public static ArrayList<String> findPermutationsWithDups(String s){
+		HashMap<Character, Integer> hm = buildFreqTable(s);
+		ArrayList<String> res = new ArrayList<String>();
+		getPermutationsWithDubplicates(hm, "", s.length(), res);
+		
+		return res;
+		
+	}
+	
+	private static HashMap<Character, Integer> buildFreqTable(String s){
+		char[] in = s.toCharArray();
+		HashMap<Character, Integer> hm = new HashMap<>();
+		for(char c: in){
+			if(hm.containsKey(c)) hm.put(c, hm.get(c)+1);
+			else hm.put(c, 0);
+		}
+		return hm;
+	}
+	
+	public static void getPermutationsWithDubplicates(HashMap<Character, Integer> hm, String prefix, int suffix, ArrayList<String> res){
+	
+		if(suffix==0){
+			res.add(prefix);
+			return;
+		}
+		
+		for(Character c: hm.keySet()){
+			int count = hm.get(c);
+			if(count>=0) { //more than one occurrence
+				hm.put(c, count-1);
+				getPermutationsWithDubplicates(hm, prefix+c,suffix-1,res);
+				hm.put(c, count);
+			}
+		}
+	}
 	public static void main(String[] args) {
-		String s1 = "ABC";
-		String s2 = "ABCD";
-		HashSet<String> res1 = findPermutations(s1);
-		System.out.println(res1.toString());
-		HashSet<String> res2 = findPermutations(s2);
-		System.out.println(res2.toString());
+//		String s1 = "ABC";
+//		String s2 = "ABCD";
+//		HashSet<String> res1 = findPermutations(s1);
+//		System.out.println(res1.toString());
+//		HashSet<String> res2 = findPermutations(s2);
+//		System.out.println(res2.toString());
+		
+		
+		String s3 = "aaab";
+		ArrayList<String> res3 = findPermutationsWithDups(s3);
+		System.out.println(res3.toString());
 	}
 }
 
