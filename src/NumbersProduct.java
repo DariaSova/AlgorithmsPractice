@@ -18,9 +18,9 @@ public class NumbersProduct {
 		int res1 = multiply(smaller,b);
 		
 		if(s % 2 ==0) { //if even
-			return 2*res1;
+			return res1+res1;
 		} else {
-			return 2*res1 + b;
+			return res1+res1 + b;
 		}
 		
 	}
