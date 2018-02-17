@@ -89,11 +89,6 @@ public class Dijkstra {
 			}
 		}
 		
-		
-		
-		
-	
-		
 		return hm.get(l).costsofar;
 	}
 	
