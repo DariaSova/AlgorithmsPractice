@@ -19,6 +19,17 @@ public class KDivingBoard {
 		
 	}
 	
+	static void getLengths(HashSet<Integer> res, int longer, int shorter, int K){
+		
+		int nShort = 0;
+		
+		for(nShort=0; nShort<=K; nShort++){
+			int nLong = K -nShort;
+			int total = nShort*shorter + nLong*longer;
+			res.add(total);
+		}
+	}
+	
 	public static void main(String[] args) {
 		int longer = 2;
 		int shorter = 1;
@@ -28,6 +39,7 @@ public class KDivingBoard {
 		
 		getAllLengths(lengths, 200, 0, longer, shorter, seenbefore);
 		System.out.println(lengths);
+		
 	}
 
 }
